@@ -1,0 +1,635 @@
+You are a developer at the Little Lemon Tree company and your team leader has asked you to embed a map in the web page you are developing. You have learned that there are various important security issues when using iframes. Select the ways that these issues can be addresed. Check all that apply.      
+
+    -> Recommend that iframes are not used.     
+Correct
+That's correct! You need to be mindful when embedding a web page using iframe because the web page can run JavaScript code which can be used to exploit security vulnerabilities.      
+
+    -> You can use the allow attribute to limit which browser features the iframe can access.     
+
+Correct
+That's correct! The allow attribute can be set, for example, to not allow the iframe camera or microphone access.      
+
+    -> The sandbox attribute can prevent files from being downloaded.     
+
+Correct
+That's correct! The sandbox attribute can also prevent popup windows.     
+
+
+                        iFrame sandbox cheat sheet
+
+Allow downloads value
+
+<iframe src="https://www.example.com" sandbox="allow-downloads"></iframe>
+
+The <iframe> is the inline frame element that embeds an HTML page into another page.  
+
+Apart from the global attributes, which can be a part of the iframe, major element-specific attributes are listed below. 
+
+            allow 
+It specifies what features or permissions are available to the frame, for instance, access to the microphone, camera, other APIs and so on. For example: 
+    -> allow="fullscreen” the fullscreen mode can be activated 
+    -> allow=“geolocation” lets you access the user’s location 
+
+To specify more than one feature, a semicolon-separator should be used between features. For example, the following would allow using the camera and the microphone: 
+
+<iframe src="https://example.com/…" allow="camera; microphone"> </iframe> 
+
+            name 
+The name for the <iframe>. For example: 
+
+<iframe name = "My Frame" width="400" height="300"></iframe>  
+
+            height 
+It specifies the height of the frame. The default value is 150, in terms of CSS pixels. 
+width 
+
+            width
+Specifies the width of the frame, in terms of CSS pixels. The default value is 300 pixels.
+
+            referrerpolicy 
+A referrer is the HTTP header that lets the page know who is loading it. This attribute indicates which referrer information to send when loading the frame resource. The common values are: 
+    -> no-referrer The referrer header will not be sent. 
+    -> origin The referrer will be limited to the origin of the referring page 
+    -> strict-origin The origin of the document is sent as the referrer only when using the same protocol security level (HTTPS to HTTPS) 
+
+
+            sandbox 
+To enforce greater security, a sandbox applies extra restrictions to the content in the <iframe>. To lift particular restrictions, an attribute value (permission token) is used. The common permission tokens are listed below: 
+
+    ->allow-downloads Allows the user to download an item 
+    -> allow-forms Allows the user to submit forms 
+    -> allow-modals The resource can open modal windows 
+    -> allow-orientation-lock Lets the resource lock the screen orientation 
+    -> allow-popups Allows popups to open 
+    -> allow-presentation Allows a presentation session to start 
+    -> allow-scripts Lets the resource run scripts without creating popup windows 
+
+Note that when the value of this attribute is empty, all restrictions are applied. To apply more than one permission, use a space-separated list. For example, the following would allow form submission and scripts while keeping other restrictions active: 
+
+<iframe src="my_iframe_sandbox.html" sandbox="allow-forms allow-scripts"> 
+</iframe> 
+
+            src 
+The URL of the page to embed in the <iframe>. Using the value about:blank would embed an empty page. 
+
+            srcdoc
+Let's you specify the inline HTML to embed in the <iframe>. When defined, this attribute would override the src attribute.  
+For instance, the following code will display "My inline html" in the frame, instead of loading my_iframe_src.html.
+
+<iframe src="my_iframe_src.html" srcdoc="<p>My inline html</p>" > 
+</iframe> 
+
+            loading
+This attribute let's you specify if the iframe should be loaded immediately when the web page loads (eager) or loaded when iframe is displayed in the browser (lazy). This allows you to defer loading iframe content if it is further down your web page and outside of the display area when the page is initially loaded.
+
+<iframe src="my_iframe_src.html" loading="lazy" > 
+</iframe> 
+
+            title
+This attribute let's you add a description to the iframe for accessibility purposes. The value of this attribute should accurately describe the iframe's content.
+
+<iframe src="history.html" title="An embedded document about the history of my family" > 
+</iframe> 
+
+            2D canvas
+    -> 2D Canvas is used for building both 2D video games and animations.     
+    -> The 2D Canvas allows 2D graphics to be drawn in the web browser.      
+            GIF and webP
+    -> GIF and webP are used to animate images, but with no interactivity.     
+    -> GIF and webP are popular for embedding animated content but the format has no interactivity.       
+
+
+---------------------------------week 2 ---------------->>>>>>>>>>
+
+            CSS layouts
+CSS layouts is all about how the content of your web page is organized. Flexboxes, grids and boxes are all popular CSS layout options. 
+    -> The display property specifies the type of box you want to use for an HTML element.  
+        -> The display property does specify the type of box you can use for an HTML element.    
+    -> A flexbox is one-dimensional.     
+        -> Flexboxes are one-dimensional. A given flexbox container will lay things out in either a column or a row along its axis.     
+    -> A grid is two-dimensional.  
+        -> Grids are two-dimensional. A grid creates a two-dimensional grid along both the row and column axes.       
+    -> Flexboxes and grids can help create rules for multiple elements.        
+        -> Flexboxes and grids can help create rules for multiple elements.     
+
+            Understanding flexbox
+Much like the div and box container that you can create using HTML, flexbox is a type of container. Flexbox can overcome the limitations caused by containers such as block and inline because it does a better job of scaling over larger web pages and also provides more dynamic control of the containers. This is because it can grow, shrink and align the items inside it which give better control to the programmer over the contents and styling of the items inside the container. 
+
+Before learning about the common layouts built using the flexbox, it is important to understand the properties inside it and how flexbox works. Let’s examine some of the important characteristics of flexboxes and the properties that can be used to configure them.
+
+Flexbox is single-dimensional, which means you can align it either along a row or a column and it is set to row alignment by default. There are two axes, the main and cross-axis, much like the x and y-axis used in coordinate geometry. When aligned along the row, the horizontal axis is called the main axis and the vertical axis is called the cross axis. For the items present inside the flexbox container, the placement starts from the top-left corner moving along the main or horizontal axis. When the row is filled, the items continue to the next row. Note that with the help of a property called flex-direction, you can instead flip the main axis to run vertically and the cross axis will then be horizontal. In such a case, the items will start from top left and move down along the vertical main axis. The properties you choose will help better control alignment, spacing, direction and eventually styling of the container and items present inside it. 
+
+                            CSS units of measurement
+A web page, as you know it, is two-dimensional. In other words, it has width and height. There are a number of other ways you can express this such as vertical and horizontal, length and breadth, x and y axis and so on. Another property of a web page is its size which can either be static or dynamic. When you’ve encountered enough CSS code, you will note a number of different ways in which the values for the same property can be declared using different units of measurement. Most of these units of measurement are used to account for the dynamism and dimensionality of a web page. 
+
+Let’s examine the most widely used units of measurement. They can broadly be categorized as Absolute and Relative units. 
+
+                        Absolute units
+Absolute units are constant across different devices and have a fixed size. They are useful for activities like printing a page. They are not so suitable when it comes to the wide variety of devices in use today that have different viewport sizes. Because of this, absolute units are used when the size of the web page is known and will remain constant. 
+
+The table for absolute units can be seen below:
+
+
+Unit        Name                    Comparison
+Q           Quarter-millimeters     1Q = 1/40th of 1cm
+mm          Millimeters             1mm = 1/10th of 1cm 
+cm          Centimeters             1cm = 37.8px = 25.2/64in
+in          Inches                  1in = 2.54cm = 96px
+pc          Picas                   1pc = 1/6th of 1in
+pt          Points                  1pt = 1/72nd of 1in
+px          Pixels                  1px = 1/96th of 1in
+
+Of these, the pixels and centimeters are most frequently used for defining properties. 
+
+                        Relative values
+When you create a web page, you will almost never have only a single element present inside it. Even in case of containers such as flexboxes and grids, there’s usually more than one element present that rules are applied to. Relative values are defined ‘in relation’ to the other elements present inside the parent element. Additionally, they are defined ‘in relation’ to the viewport or the size of the visible web page. Given the dynamic nature of web pages today and the variable size of devices in use, relative units are the go-to option in many cases. Below is a list of some of the important relative units. 
+
+Unit             Description and relativity
+
+em               Font size of the parent where present.
+ex               x-co-ordinate or height of the font element.
+ch               Width of the font character.
+rem              Font size of the root element.
+lh               Value computed for line height of parent element. 
+rlh              Value computed for line height of root element which is <html>. 
+vw               1% of the viewport width.
+vh               1% of the viewport height.
+vmin             1% of the smaller dimension of viewport.
+vmax             1% of the larger dimension of viewport.
+%                Denotes a percentage value in relation to its parent element. 
+
+Many of these units are used in terms of the relative size of fonts. Some units are more suitable depending on the relative context. Like when the dimensions of the viewport are important, it's more appropriate to use vw and vh. In a broader context, the relative units you will see most frequently used are percentage, em, vh, vw and rem. 
+Much like the absolute and relative units discussed above, certain properties have their own set of acceptable values that need to be taken into account. For example, color-based properties such as backgroundcolor will have values such as hexadecimal, rgb(), rgba(), hsl(), hsla() and so on. Each property should be explored on an individual basis and practicing with the code will help you to decide which of these units of measurements are the most suitable choice. 
+
+                        Grids and flexbox cheat sheet
+Note: ‘|’ stands for alternatives or OR.
+            Grid 
+The syntax for creating a grid:
+
+selector{
+display: grid| inline-grid
+}
+
+Grid shorthand consists of the following properties with default values:
+
+grid:
+
+grid-template-rows: none
+grid-template-columns: none
+grid-template-areas: non
+grid-auto-rows: auto
+grid-auto-columns: auto
+grid-auto-flow: row
+grid-column-gap: 0
+grid-row-gap: 0
+column-gap: normal
+row-gap: normal
+
+                        Grid properties for container
+grid-template-columns: measurement units | % units |repeat()
+grid-template-rows: measurement units | % units |repeat()
+grid-auto-columns: measurement unit (fixed value for all columns)
+grid-auto-rows: measurement unit (fixed value for all rows)
+grid-template: “header header” auto
+“main right” 75vh
+“footer footer” 20rem
+grid-template-areas: “header header”
+“main right”
+“footer footer”
+
+                        Gap
+grid-gap: measurement units
+grid-column-gap: measurement units
+grid-row-gap: m-unit-1  m-unit-2
+
+                        Alignment
+justify-items: start | center | end | stretch
+align-items: start | center | end | stretch
+place-items: start | stretch /* shorthand for two properties above */
+
+                        Justification
+justify-content: start | center | end | stretch | space-between | space-evenly | space-around
+align-content: start | center | end | stretch | space-between | space-evenly | space-around
+place-content: center | start
+
+                    Positioning
+grid-auto-flow: row | column | dense
+grid-auto-columns: measurement units
+grid-auto-rows: measurement units
+
+                        Grid properties for items (child)
+grid-column: column position /* E.g. 1/2  */
+grid-column-start: column start position
+grid-column-end: column end position
+
+grid-row:  row position /* E.g. 1/2  */
+grid-row-start: row start position
+grid-row-end: row end position
+
+grid-area: “some name” |  /*E.g.  2/1/3/2 */ /* Shorthand for row-column properties above. 
+
+                        Justification and alignment
+justify-self: start | center | end | stretch
+align-self: start | center | end | stretch
+
+place-self: start | stretch /* shorthand for two properties above */
+
+                        Flexbox
+The syntax for creating a flexbox:
+
+selector{
+display: flex | inline-flex
+}
+
+                        Properties for flexbox container
+flex-direction: row | row-reverse | column | column-reverse
+flex-wrap: wrap | nowrap
+align-items: flex-start | flex-end | center | stretch
+justify-content: flex-start | flex-end | center | space-between | space-evenly | space-around
+
+                        Properties for flexbox items (child)
+Shorthand:
+flex:
+
+flex-grow: factor of flex’s main size    /* E.g. 1 */
+flex-shrink: factor of flex’s main size    /* E.g. 0 */
+flex-basis: auto | factor of main’s size | measurement unit
+order:position in flex /* Set ascending by default */
+align-self:  start | center | end | stretch
+
+                        All selectors and their specificity
+As you build a website, the complexity of the code might increase to such a point that more than one CSS rule is applied to the same element. Or, you might accidentally add more than one rule over the same element. This results in conflicts as only one rule can be applied to a specific property. For example, the color of a certain p tag can either be blue or white, but not both. CSS engines use something called specificity to resolve these conflicts. Specificity is the ranking or score that helps CSS determine the final rule that will be applied to a given element. 
+This reading will help you grasp how the element with the ‘highest’ specificity is selected by CSS. But before you read on, it is important to note that these rules only apply in cases where conflicts arise for the properties.
+
+                        Specificity hierarchy
+CSS has a set of rules that it uses to ‘score’ or assign a certain weight to selectors and this creates a specificity hierarchy. Based on the weights, there are four categories in this hierarchy: 
+    -> Inline styles 
+    -> IDs 
+    -> Classes, attributes, and pseudo-classes 
+    -> Elements and pseudo-elements 
+
+                        Inline styles
+Inline styles are attached to the elements within your HTML code like with the ‘style’ attribute. inline styles have the highest specificity. That means that rules that are defined as inline styles will be applied irrespective of other rules. 
+For example, take these two rules that create a conflict in color styling for a p tag:
+
+ <p style=“color: white;”> 
+p{color: blue} 
+
+The p tag will be colored white because it is declared inside the inline tag. 
+
+            IDs
+Next in the hierarchy are IDs and by now you know that they are represented by ‘#’.  For example:
+
+#div
+
+                        Classes, attributes, and pseudo-classes
+Classes, and the attributes inside the selectors, come next with what is called the pseudo-classes that you will soon learn more about. 
+For example:
+
+.my-class 
+p[“attribute”]
+div:hover
+
+                        Elements and pseudo-elements
+Finally, elements and something you call pseudo-elements have the lowest position in the specificity hierarchy. You will learn more about pseudo-elements later in this lesson.
+
+            Calculating scores
+But by now you might wonder how is specificity calculated? 
+CSS uses the hierarchical model internally to calculate the specificity of the selectors used on a web page. But often as the size of CSS code increases, developers unavoidably face rule conflicts. In these cases, developers use the specificity hierarchy to calculate the precedence of CSS rules and to control the outcome of their web pages. 
+Let’s explore a practical example of how to determine the score of a few selectors. 
+
+#hello {} will be 0100
+div {} will be 0001 and
+div p.foo {} will be 0012
+
+In the order stated above, the four categories will be assigned values 1000, 100, 10 and 1 with the element selectors having the lowest value of 1. These scores will be calculated respectively for each element present inside the selector. The total score for these elements is then calculated and the one with the highest value has the highest specificity.
+Let’s explore a couple of examples for clarity. Take note that the properties and values are not included in these examples to keep the focus on the selectors only. 
+
+Example 1
+p {} 
+div p {}
+div p.foo {}
+
+p  => 1 element =>  0 0 0 1 => Score: 1
+div p => 2 elements => 0 0 0 2 => Score: 2
+div p.foo {} => 2 elements and 1 class selector => 0 0 1 2 => Score: 12
+
+The third case has a total of 12 for the p tag and so has the highest specificity. The rules for the other two cases are then overridden and the rules inside the third case are applied. 
+
+Example 2
+p#bar => 1 element & 1 ID =>  0 1 0 1 => Score: 101
+p.foo => 1 element & 1 class => 0 0 1 1 => Score: 11
+p.p.foo => 1 element & 2 class =>  0 0 2 1 => Score: 21
+
+By now it should be clear that the case containing ID has a much higher score and the rules inside it will be applied. 
+Once you learn about the different pseudo-classes, pseudo-elements, and wide range of selectors later in this section, it will be easy to see why understanding specificity is important. 
+While the weights assigned from the hierarchical structure help in a systematic approach, there are a few more guidelines and rules that become important especially in cases when the score for the different selectors is the same. Some of these are:
+
+    -> Every selector will have a score and place in the hierarchy
+    -> In the case of selectors with equal specificity, the latest or last written rule is the one that will be applied
+    -> In general, ID selector should be applied in cases where you need to be certain about a rule 
+    -> Universal selectors have zero specificity value
+
+This reading only gave you an overview of specificity, but you should know that it is a much broader topic and also the underlying basis on which CSS engines work. That's what the 'Cascading' in CSS means: the way in which CSS engines evaluate and apply the specificity rules is called ‘cascade’. Cascade is a type of small waterfall that falls in stages down the rocks and that is exactly how CSS behaves. 
+Don’t be too worried about applying what you’ve learned now, there are CSS specificity calculators available that can help you with determining the styling outcomes of your pages. 
+
+                            Adjacent and Sibling combinators
+Adjacent combinators will only target the first element after the specified elements while Sibling combinators target all elements of the same type that follow the specified element.  
+
+                            CSS Pseudo cheat sheet
+            Simple selectors
+
+Selector    Syntax      Example
+
+Element     element     div {}
+Class       .class      .alpha {}
+ID          #id          #alpha {}
+Universal   *            * {}
+
+            Variations of simple selectors
+Elements            Syntax                      Example                 Description
+
+Two classes         .first-class.second-class   .alpha.beta {}          All elements with classes alpha and beta
+Element and class    element.class               p.alpha {}             All alpha class elements inside <p>
+Two elements         element, element            p, div {}              All <p> and <div> elements
+Two elements         element element             p div {}               All <div> elements inside <p>
+
+            Descendant selectors/combinators
+Selector            Syntax                       Example                  Description
+
+Descendant          element element              div p {}                  All <p> descendants of <div>
+Child               element>element              div > p {}                All <p> direct descendants of <div>
+Adjacent Sibling    element+element              div + p {}                <p> element directly after <div>
+General Sibling     element~element              div ~ p {}                All <p> element iterations after <div>
+
+            Attribute selectors
+Selector            Syntax                         Example
+
+[attribute]         [href] {}                      Selects all elements with a href attribute
+[attribute=value]   [lang="fr"] {}                 Selects all elements with lang attribute that has a value of "fr"
+[attribute~=value]  [input~=hello] {}              Elements with input attribute containing the whitespace separated substring "hello"
+[attribute|=value]  [lang|=en] {}                  Elements with lang attribute value equal to "en" or "en-"(en hyphen)
+[attribute^=value]  a[href^="https"] {}            Every <a> element with href attribute value begins with "https"
+[attribute$=value]  a[href$=".docx"] {}            Every <a> element with href attribute value ends with ".docx"
+[attribute*=value]  a[href*="meta"] {}             Every <a> element with href attribute value has substring "meta"
+
+
+Pseudo-class              Example                             Description of selection
+:active                 a:active {}                       All active links 
+:checked                input:checked {}                  All the checked <input> elements
+:default                input:default {}                  All default <input> elements
+:disabled               input:disabled {}                 All disabled <input> elements
+:empty                  div:empty {}                      All the <div> elements with no children
+:enabled                input:enabled {}                  All the enabled <input> elements
+:first-child            p:first-child {}                  All the <p> elements who are the first child of a parent element
+:first-of-type          p:first-of-type {}                All the <p> element who are the first <p> element of a parent element
+:focus                  input:focus {}                    Input element under focus
+:fullscreen             :fullscreen {}                    The element in full-screen mode
+:hover                  p:hover {}                        Action effect on mouse hover
+:invalid                input:invalid {}                  Input elements with an invalid value
+:last-child             p:last-child {}                   All the <p> elements who are the last child of a parent element
+:last-of-type           p:last-of-type {}                 All the <p> elements who are the last <p> element of a parent element
+:link                   a:link {}                         All unvisited links
+:not(selector)          :not(div) {}                      All the elements that are not a <div> element
+:nth-child(n)           div:nth-child(3) {}               All the <p> elements that are the third child of a parent element
+:nth-last-child(n)      div:nth-last-child(3) {}          All the <div> elements which are the third child of a parent element, counting from last child element
+:nth-last-of-type(n)    p:nth-last-of-type(2) {}          The second sibling from the last child of a parent element.
+:nth-of-type(n)         p:nth-of-type(2) {}               The second sibling of a parent element.
+:only-of-type           p:only-of-type {}                 All the <p> elements which are only <p> elements inside its parent
+:only-child             p:only-child {}                   All the <p> elements which are only child of a parent element
+:optional               input:optional {}                 The input elements with no "required" attribute
+:required               input:required {}                 Selects input elements with the "required" attribute specified
+:root                   :root {}                          The Root element of document
+::selection             ::selection {}                    The portion of an element that is selected by a user
+:valid                  input:valid {}                    All the input elements with a valid value
+:visited                a:visited {}                      Selects all visited links
+
+            Pseudo-element selectors
+
+Syntax              Example                            Description
+
+::after             p::after {}                         Inserts content after content of <p> element
+::before            p::before {}                        Inserts content before content of <p> element
+::first-letter      p::first-letter {}                  Selects first letter of every <p> element
+::first-line        p::first-line {}                    Selects first line of every <p> element
+::placeholder       input::placeholder {}               Selects input elements with "placeholder" attribute specified
+::marker            ::marker {}                         Selects markers in a list
+
+                        Text effects cheat sheet
+The effects developers use on text items on a web page are chosen mainly because of their styling and layout style. Interesting effects can be created by combining these with other CSS properties. 
+The visual representation of text content can be changed by four main properties: text-transform, font-style, font-weight and text-decoration.
+
+Property                  Values                                                Description
+
+Text-transform            None, uppercase, lowercase, capitalize, full-width    Modify text properties
+Font-style                Normal, italic, oblique                               Font styling options such as italics 
+Font-weight               Normal, weight, lighter, bolder, 100-900              Other font styling options like change of emphasis such as making text bold
+Text-decoration           None, underline, overline, line-through               Shorthand for auxiliary elements added to text using other properties such as text-decoration-line
+
+            The additional properties that help configure styling effects are below.
+
+Text-align                      For horizontal alignment of text
+
+Text-align-last                 Alignment for the last line when text set to justify
+Text-combine-upright            Multiple characters into the space of a single character placed upright like in Mandarin
+Text-decoration-color           Color configuration of the text-decoration                       
+Text-decoration-line            Line type in text-decoration such as underline, overline and so on                       
+Text-decoration-style           Styles added to lines under text such as wavy, dotted and so on
+Text-decoration-thickness       Thickness of the decoration line                       
+Text-emphasis                   Shorthand for other properties such as color and style 
+Text-indent                     The indentation of the first line                         
+Text-justify                    Specifies the justification method used when text-align is "justify"                        
+Text-orientation                Orientation of text in a line such as sideways, upright and so on                        
+Text-shadow                     Adds shadow to text 
+Text-underline-position         Declare position of underline set using the text-decoration property
+
+Other than these, there are some more properties that help modify the alignment and define the scope of text with their containers. 
+
+
+Property               Values                                       Description
+
+Text-overflow          Clip, ellipsis                               Determines overflow behavior of text with the container
+Word-wrap              Normal, anywhere, break-word                 Applies to inline elements, alias for overflow-wrap
+Word-break             Normal, break-all, keep-all, break-word      Used for long words to decide if words should break or overflow
+Writing-mode           Horizontal-tb, vertical-lr, vertical-rl      Can set the text direction vertical or horizontal
+
+The properties mentioned are ones that can be used for giving effects to text.                 
+                
+                
+                        Animation and effects cheat sheet
+            Transform property
+    Syntax
+transform: transform function-values
+
+Example
+.sample-class {
+    transform: rotate(60deg);
+}
+
+Keyword-value type: none
+
+.sample-class {
+    transform: none;
+}
+
+        Function-value type: matrix() 
+Variations: matrix(), matrix3d()
+
+.sample-class {
+     transform: matrix(1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
+}
+
+        Function-value type: rotate(deg)
+Variations: rotate(), rotate3d(), rotateX(), rotate(), rotateZ()
+
+.sample-class {
+    transform: rotate3d(3,2,1, 100deg);
+}
+Note: In rotate3d(), the respective values represent x, y, z co-ordinate and degree of rotations
+
+        Function-value type: translate(x,y)
+Variations: translate(), translate3d(), translateX(), translateY(), translateZ()
+
+.sample-class {
+    transform: translate3d(10px, 20px, 30px);
+}
+
+Note: In translate3d(), the respective values represent translation along the x, y, z co-ordinates
+
+            Function-value type: scale(factor)
+Variations: scale(), scale3d(), scaleX(), scaleY(), scaleZ()
+
+.sample-class {
+    transform: scale3d(2, 1, 0.3);
+}
+
+Note: In scale3d(), the respective values represent scaling times along the x, y, z co-ordinates
+
+        Function-value type: skew(deg, deg)
+Variations: skew(), skewX(), skewY()
+
+.sample-class {
+    transform: skew(100deg);
+}
+
+                Global value types:
+.sample-class {
+    transform: inherit;
+}
+
+.sample-class {
+    transform: initial;
+}
+
+.sample-class {
+    transform: revert;
+}
+
+.sample-class {
+    transform: revert-layer;
+}
+
+.sample-class {
+    transform: unset;
+}
+
+                            Multiple transform over the same element
+            Syntax
+Transform can be applied for rotate(), scale() and translate() that can be listed together. Each of these properties can have their own values and the actions will give a combined effect. 
+
+Example 
+
+.sample-class {
+    transform: rotate(45deg) scale(1.5) translate(45px);
+}
+
+Additional property under transform:transform-origin
+
+Determines the anchor point for the centering of transform.
+Example 
+
+.sample-class {
+    transform-origin: 10px 10px;
+}
+
+.sample-class {
+    transform-origin: right bottom;
+}
+
+                        T​ransition property
+            Transition shorthand 
+Transition shorthand has four following sub-properties, each of which can also be individually defined. 
+
+    -> transition-property
+    -> transition-duration
+    -> transition-timing-function
+    -> transition-delay
+You have to list the values without naming them individually. Values skipped will be assigned their default values. 
+
+            Syntax
+transition: property duration timing-function delay;
+
+Example 
+transition: margin-left2s ease-in-out 0.5s;
+
+            Animations and @keyframes
+animation property:
+
+        Syntax
+animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+Example 
+
+.sample-class {
+    animation: none 2 ease 0.5 4 normal none running;
+}
+The animation property is a shorthand for the sub-properties below:
+
+animation-name
+animation-duration
+animation-timing-function
+animation-delay
+animation-iteration-count
+animation-direction
+animation-fill-mode
+animation-play-state
+
+The values not mentioned are given default values.
+Animation-name property is used to tie-in the @keyframes rule.
+
+                        @keyframes
+            Syntax
+@keyframes mymove {
+  from {property: value}
+  to { property: value }
+}
+
+Example
+@keyframes animation-name {
+    from {bottom: 0px;}
+    to {bottom: 100px;}
+}
+
+Percentage denotes the timing of the animation. 
+
+            Alternative syntax
+@keyframes animation-name {
+/* declare actions here */
+}
+
+Example
+@keyframes animation-name {
+    0%,100%{
+        background-color: blue;
+    }
+    50% {
+        background-color: green;
+    }
+}
+
+Multiple animations
+Works the same as regular animation, multiple rules can be set. 
+
+#some-class{
+    animation: animation-a 2s linear infinite alternate, 
+        animation-b 3s ease infinite alternate;
+}  

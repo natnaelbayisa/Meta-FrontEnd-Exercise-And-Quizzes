@@ -1,0 +1,819 @@
+                            Operators in depth
+    1. Additional operators
+        -> Logical AND operator: && 
+        -> Logical OR operator: || 
+        -> Logical NOT operator: ! 
+        -> The modulus operator: % 
+        -> The equality operator: ==
+        -> The strict equality operator: ===
+        -> The inequality operator: !=
+        -> The strict inequality operator: !==
+        -> The addition assignment operator: += 
+        -> The concatenation assignment operator: += (it's the same as the previous one - more on that later)
+
+The logical AND operator in JavaScript: &&
+The logical AND operator is, for example, used to confirm if multiple comparisons will return true.
+In JavaScript, this operator consists of two ampersand symbols together: &&.
+Let's say you're tasked with coming up with some code that will check if the currentTime variable is between 9 a.m. and 5 p.m. The code needs to console.log true if currentTime > 9 and if currentTime < 17.
+
+Here's a solution: 
+var currentTime = 10;
+console.log(currentTime > 9 && currentTime < 17);
+
+How does this code work?
+First, on line one, I set the currentTime variable, and assign the value of 10 to it.
+Next, on line two I console log two comparisons: 
+currentTime > 9 
+currentTime < 17
+I also use the && logical operator to join the two comparisons.
+Effectively, my code is interpretted as the following:
+
+console.log(10 > 9 && 10 < 17);
+The comparison of 10 > 9 will return true.
+Also, the comparison of 10 < 17 will return true.
+This means I can further re-write the line two of my solution as follows: 
+
+console.log(true && true);
+
+In essence, this is how my code works.
+Now, the question is, what will be the result of console.log(true && true)?
+To understand the answer, you need to know the behavior of the && logical operator.
+The && logical operator returns a single value: the boolean true or false, based on the following rules: 
+
+    -> It returns true if both the values on its right and on its left are evaluated to true 
+    -> It returns false in all the other instances
+
+In other words: 
+
+console.log(true && true) will output: true 
+console.log(true && false) will output: false 
+console.log(false && true) will output: false 
+console.log(false && false) will output: false
+
+The logical OR operator in JavaScript: ||
+The logical OR operator in JavaScript consists of two pipe symbols together: ||.
+It is used when you want to check if at least one of the given comparisons evaluates to true.
+Consider the following task: You need to write a program in JavaScript which will return true if the value of the currentTime variable is not between 9 and 17. Put differently, your code needs to console.log true if the value of the variable currentTime is either less than 9 or greater than 17.
+Here's a solution: 
+
+var currentTime = 7;
+console.log(currentTime < 9 || currentTime > 17);
+
+In line one of the code I assign the number 7 to the variable currentTime.
+On line two, I console log the result of checking if either currentTime < 9 or currentTime > 17 will evaluate to true.
+It's the same as this: 
+
+console.log(true || false);
+
+Here are the rules of how the || operator evaluates given values: 
+console.log(true || true) will output: true 
+console.log(true || false) will output: true  
+console.log(false || true) will output: true  
+console.log(false || false) will output: false
+The logical OR operator will always return true, except when both sides evaluate to false. In other words, for the logical OR operator to return false, the results of both comparisons must return false.
+Going back to the example of checking if either currentTime < 9 or currentTime > 17, this makes sense: the only time you will get false is when the value stored in the currentTime variable is greater than 9 and less then 17.
+
+The logical NOT operator: !
+In JavaScript, the logical NOT operator's symbol is the exclamation mark: !.
+You can think of the ! operator as a switch, which flips the evaluated boolean value from true to false and from false to true.
+For example if I assign the boolean value of true to the petHungry variable: 
+
+v​ar petHungry = true;
+
+.​..then I can console log the fact that the pet is no longer hungry by using the ! operator to flip the boolean value stored inside of the petHungry variable, like so:
+
+c​onsole.log('Feeding the pet');
+console.log("Pet is hungry: ", !petHungry);
+console.log(petHungry);
+
+This is the output of the above code:   
+
+Pet is hungry: true
+Feeding the pet
+Pet is hungry: false
+true
+
+The reason for the changed output in the console is because you have flipped the value stored inside the petHungry variable, from true to false.
+Notice, however, that the code on line five of the example above still outputs true - that's due to the fact that I didn't reassign the value of the petHungry variable.
+Here's how I could permanently change the value stored in the petHungry variable from true to false: 
+
+var petHungry = true;
+petHungry = !petHungry;
+
+In this example, I first assign the value of true to the new variable of petHungry. Then, on line two, I assign the opposite value, the !true - read: not true - to the existing petHungry variable.
+
+The modulus operator: %
+The modulus operator is another mathematical operator in JavaScript. It returns the remainder of division.
+To demonstrate how it works, imagine that a small restaurant that has 4 chairs per table, and a total of 5 tables, suddenly receives 22 guests.
+How many guests will not be able to sit down in the restaurant?
+You can use the modulus operator to solve this.
+
+console.log(22 % 5); // 2
+
+The output is 2, meaning, when I divide 22 and 5, I get a 4, and the remainder is 2, meaning, there are 2 people who couldn't get a place in this restaurant.
+
+The equality operator, ==
+The equality operator checks if two values are equal.
+For example, this comparison returns true: 5 == 5. Indeed, it is true that 5 is equal to 5.
+Here's an example of the equality operator returning false:  5 == 6. Indeed, it is true that 5 is not equal to 6.
+Additionally, even if one of the compared values is of the number type, and the other is of the string type, the returned value is still true: 5 == "5". 
+This means that the equality operator compares only the values, but not the types.
+
+The strict equality operator, ===
+The strict equality operator compares for both the values and the data types.
+With the strict equality operator, comparing 5 === 5 still returns true. The values on each side of the strict equality operator have the same value and the same type. However, comparing 5 == "5" now returns false, because the values are equal, but the data type is different.
+
+The inequality operator, !=
+The inequality operator checks if two values are not the same, but it does not check against the difference in types.
+For example, 5 != "5" returns false, because it's false to claim that the number 5 is not equal to number 5, even though this other number is of the string data type.
+
+The strict inequality operator !==
+For the strict inequality operator to return false, the compared values have to have the same value and the same data type. 
+For example,  5 !== 5 returns false because it is false to say that the number 5 is not of the same value and data type and another number 5.
+However, comparing the number 5 and the string 5, using the strict inequality operator, returns true.
+
+console.log(5 !== "5")
+
+                        2. Using the + operators on strings and numbers
+Combining two strings using the + operator
+The + operator, when used with number data type, adds those values together.
+
+However, the + operator is also used to join string data type together.
+
+For example:
+
+"inter" + "net" // "internet"
+"note" + "book" // "notebook"
+
+If the + operator is used to join strings, then it is referred to as the concatenation operator, and you'll say that it's used to concatenate strings.
+When used with numbers, the + operator is the addition operator, and when used with strings, the + operator is the concatenation operator.
+Combining strings and numbers using the + operator
+But what happens when one combines a string and a number using the + operator?
+
+Here's an example:
+
+365 + " days" // "365 days"
+12 + " months" // "12 months"
+
+Here, JavaScript tries to help by converting the numbers to strings, and then concatenating the number and the string together, ending up with a string value.
+The process of this "under-the-hood" conversion of values in JavaScript is referred to as "coercion". JavaScript coerces a number value to a string value - so that it can run the + operator on disparate data types.
+The process of coercion can sometimes be a bit unexpected.
+Consider the following example:
+
+1 + "2"
+
+What will be the result of 1 + "2"?
+Note that the value of 1 is of the number data type, and the value of "2" is of the string data type, and so JavaScript will coerce the number 1 to a string of "1", and then concatenate it with the string of "2", so the result is a string of "12".
+
+The addition assignment operator, +=
+The addition assignment operator is used when one wants to accumulate the values stored in a variable.
+Here's an example: You are counting the number of overtime hours worked in a week.
+You don't have to specify the type of work, you just want to count total hours.
+You might code a program to track it, like this:
+
+var mon = 1;
+var tue = 2;
+var wed = 1;
+var thu = 2;
+var fri = 3;
+console.log(mon + tue + wed + thu + fri); // 9
+
+You can simplify the above code by using the addition assignment operator, as follows:
+
+var overtime = 1;
+overtime += 2;
+overtime += 1;
+overtime += 2;
+overtime += 3;
+console.log(overtime); // 9
+
+Using the addition assignment operator reduces the lines of your code.
+
+The concatenation assignment operator, +=
+This operator's syntax is exactly the same as the addition assignment operator. The difference is in the data type used:
+
+var longString = "";
+longString += "Once";
+longString += " upon";
+longString += " a";
+longString += " time";
+longString += "...";
+console.log(longString); // "Once upon a time..."
+
+Operator precedence and associativity
+Operator precedence is a set of rules that determines which operator should be evaluated first.
+Consider the following example:
+
+1 * 2 + 3
+
+The result of the above code is 5, because the multiplication operator has precedence over the addition operator.
+Operator associativity determines how the precedence works when the code uses operators with the same precedence.
+There are two kinds: 
+
+    -> left-to-right associativity
+    -> right-to-left associativity
+
+For example, the assignment operator is right-to-left associative, while the greater than operator is left-to-right associative:
+
+var num = 10; // the value on the right is assigned to the variable name on the left
+5 > 4 > 3; // the 5 > 4 is evaluated first (to `true`), then true > 3 is evaluated to `false`, because the `true` value is coerced to `1`
+
+    The code that you write in the JavaScript programming language allows you to:
+        1. Interact with the JavaScript engine inside of the browser
+        2. Interact with other browser functionality that exists outside of the JavaScript engine, but is still inside the browser.
+
+
+                        Syntax, logical and runtime errors
+By the end of this reading, you'll be able to:
+    -> Recognize common types of errors in JavaScript
+
+Here are some of the most common errors in JavaScript: 
+    -> ReferenceError 
+    -> SyntaxError 
+    -> TypeError 
+    -> RangeError
+
+There are some other errors in JavaScript. These other errors include: 
+
+    -> AggregateError 
+    -> Error 
+    -> InternalError 
+    -> URIError
+
+However, in this reading I'll focus on the Reference, Syntax, Type, and Range errors.
+
+            ReferenceError
+A ReferenceError gets thrown when, for example, one tries to use variables that haven't been declared anywhere.
+An example can be, say, attempting to console log a variable that doesn't exist:
+
+console.log(username);
+
+If the variable named username hasn't been declared, the above line of code will result in the following output:
+
+Uncaught ReferenceError: username is not defined
+
+            SyntaxError
+Any kind of invalid JavaScript code will cause a SyntaxError.
+For example:
+    var a "there's no assignment operator here";
+The above line of code will throw the following error:  
+    Uncaught SyntaxError: Unexpected string
+
+There's an interesting caveat regarding the SyntaxError in JavaScript: it cannot be caught using the try-catch block.  
+
+            TypeError
+A TypeError is thrown when, for example, trying to run a method on a non-supported data type.
+A simple example is attempting to run the pop() method on a string:
+
+"hello".pop() // Uncaught TypeError: "hello".pop is not a function
+
+The array-like behavior of strings was already covered in an earlier lesson in this course. 
+However, as can be confirmed by running the above line of code, strings do not have all the array methods readily available to them, and trying to use some of those methods will result in a TypeError being thrown.  
+
+            RangeError
+A RangeError is thrown when we're giving a value to a function, but that value is out of the allowed range of acceptable input values.
+Here's a simple example of converting an everyday Base 10 number (a number of the common decimal system) to a Base 2 number (i.e binary number).
+
+For example:
+    (10).toString(2); // '1010'
+
+The value of 2 when passed to the toString() method, is like saying to JavaScript: "convert the value of 10 of the Base 10 number system, to its counter-part in the Base 2 number system".
+JavaScript obliges and "translates" the "regular" number 10 to its binary counter-part.
+Besides using Base 2 number system, I can also use the Base 8, like this:
+
+(10).toString(8); // 12
+
+I get back the value 12, which is the plain number 10, writen in Base 8 number system.
+However, if I try to use a non-existing number system, such as an imaginary Base 100, since this number system effectively doesn't exist in JavaScript, I will get the RangeError, because a non-existing Base 100 system is out of range of the number systems that are available to the toString() method:
+
+(10).toString(100); // Uncaught RangeError: toString() radix argument must be between 2 and 36
+
+            The functional programming paradigm
+OOP helps us model real-life objects. It works best when the grouping of properties and data in an object makes logical sense - meaning, the properties and methods "belong together".
+Note that the goal here is not to discuss OOP in depth; instead, I just want to show you the simplest explanation of what it is and how it works, in order to make the single most important distinction between FP and OOP.
+To summarize this point, we can say that the Functional Programming paradigm works by keeping the data and functionality separate. It's counterpart, OOP, works by keeping the data and functionality grouped in meaningful objects.
+
+There are many more concepts and ideas in functional programming.
+Here are some of the most important ones:
+
+    -> First-class functions
+    -> Higher-order function
+    -> Pure functions and side-effects
+
+            First-class functions
+It is often said that functions in JavaScript are “first-class citizens”. What does that mean?
+It means that a function in JavaScript is just another value that we can:
+
+    -> pass to other functions
+    -> save in a variable
+    -> return from other function
+In other words, a function in JavaScript is just a value - from this vantage point, almost no different then a string or a number.
+
+For example, in JavaScript, it's perfectly normal to pass a function invocation to another function.
+
+
+To explain how this works, consider the following program.
+
+function addTwoNums(a, b) {
+    console.log(a + b)
+}
+
+function randomNum() {
+    return Math.floor((Math.random() * 10) + 1);
+}
+function specificNum() { return 42 };
+
+var useRandom = true;
+
+var getNumber;
+
+if(useRandom) {
+    getNumber = randomNum
+} else {
+    getNumber = specificNum
+}
+
+
+addTwoNums(getNumber(), getNumber())
+
+I start the program with the addTwoNums() function whose definition I've already used earlier in various variations. The reason why this function is a recurring example is because it's so simple that it helps explain concepts that otherwise might be a bit harder to grasp.
+Next, I code a function named randomNum() which returns a random number between 0 and 10.
+I then code another function named specificNum() which returns a specific number, the number 42.
+Next, I save a variable named useRandom, and I set it to the boolean value of true. I declare another variable, named getNumber.
+This is where things get interesting.
+On the next several lines, I have an if else statement. The if condition is executed when the value of useRandom is set to true. If that's the case, the entire randomNum() function's declaration is saved into the getNumber variable. Otherwise, I'm saving the entire specificNum() function's declaration into the getNumber variable.
+In other words, based on the useRandom being set to true or false, the getNumber variable will be assigned either the randomNum() function declaration or the specificNum() function declaration.
+With all this code set, I can then invoke the addTwoNums() function, passing it the invocation of the getNumber() variables as its first and second arguments.
+This works because functions in JavaScript are truly first-class citizens, which can be assigned to variable names and passed around just like I would pass around a string, a number, an object, etc.
+Note: most of the code inside the randomNum() function declaration comes from a previous lesson, namely the lesson that discussed the Math object in JavaScript.
+This brings me to the second foundational concept of functional programming, which is the concept of higher-order functions.
+
+            Higher-order functions
+A higher-order function is a function that has either one or both of the following characteristics:
+
+    -> It accepts other functions as arguments
+    -> It returns functions when invoked
+
+There's no "special way" of defining higher-order functions in JavaScript. It is simply a feature of the language. The language itself allows me to pass a function to another function, or to return a function from another function.
+Continuing from the previous section, consider the following code, in which I'm re-defining the addTwoNums() function so that it is a higher-order function:
+
+function addTwoNums(getNumber1, getNumber2) {
+    console.log(getNumber1() + getNumber2());
+}
+
+You can think of the above function declaration of addTwoNums as describing how it will deal with the getNumber1 and getNumber2 inputs: once it receives them as arguments, it will then attempt invoking them and concatenating the values returned from those invocations.
+
+For example:
+
+addTwoNums(specificNum, specificNum); // returned number is 84
+addTwoNums(specificNum, randomNum); // returned number is 42 + some random number
+
+            Pure functions and side-effects
+Another concept of functional programming are pure functions.
+A pure function returns the exact same result as long as it's given the same values.
+An example of a pure function is the addTwoNums() function from the previous section:
+
+function addTwoNums(a, b) {
+    console.log(a + b)
+}
+
+This function will always return the same output, based on the input. For example, as long as we give it a specific value, say, a 5, and a 6:  
+
+addTwoNums(5,6); // 11
+
+... the output will always be the same.
+Another rule for a function to be considered pure is that it should not have side-effects. A side-effect is any instance where a function makes a change outside of itself.
+This includes: 
+
+    -> changing variable values outside of the function itself, or even relying on outside variables 
+    -> calling a Browser API (even the console itself!) 
+    -> calling Math.random() - since the value cannot be reliably repeated
+
+The topic of pure and impure functions can get somewhat complex.
+
+                        Object Oriented Programming principles
+The Benefits of OOP
+There are many benefits to using the object-oriented programming (OOP) paradigm.
+
+OOP helps developers to mimic the relationship between objects in the real world. In a way, it helps you to reason about relationships between things in your software, just like you would in the real world. Thus, OOP is an effective approach to come up with solutions in the code you write. OOP also:
+
+    -> Allows you to write modular code,
+    -> Makes your code more flexible and
+    -> Makes your code reusable.
+                            The Principles of OOP
+The four fundamental OOP principles are inheritance, encapsulation, abstraction and polymorphism. You'll learn about each of these principles in turn. The thing to remember about Objects is that they exist in a hierarchal structure. Meaning that the original base or super class for everything is the Object class, all objects derive from this class. This allows us to utilize the Object.create() method. to create or instansiate objects of our classes.
+
+class Animal { /* ...class code here... */ }
+
+var myDog = Object.create(Animal)
+
+console.log (Animal)
+
+A more common method of creating obbjects from classes is to use the new  keyword. When using a default or empty constructor method, JavaScript implicitly calls the Object superclass to create the instance.
+
+class Animal { /* ...class code here... */ }
+
+var myDog = new Animal()
+
+console.log (Animal)
+
+This concept is explored within the next section on inheritance
+
+OOP Principles: Inheritance
+Inheritance is one of the foundations of object-oriented programming.
+
+In essence, it's a very simple concept. It works like this: 
+
+    -> There is a base class of a "thing".
+    -> There is one or more sub-classes of "things" that inherit the properties of the base class (sometimes also referred to as the "super-class")
+    -> There might be some other sub-sub-classes of "things" that inherit from those classes in point 2.
+
+Note that each sub-class inherits from its super-class. In turn, a sub-class might also be a super-class, if there are classes inheriting from that sub-class.
+
+All of this might sound a bit "computer-sciency", so here's a more practical example:
+
+    -> There is a base class of "Animal".
+    -> There is another class, a sub-class inheriting from "Animal", and the name of this class is "Bird".
+    -> Next, there is another class, inheriting from "Bird", and this class is "Eagle".
+
+Thus, in the above example, I'm modelling objects from the real world by constructing relationships between Animal, Bird, and Eagle. Each of them are separate classes, meaning, each of them are separate blueprints for specific object instances that can be constructed as needed.
+
+To setup the inheritance relation between classes in JavaScript, I can use the extends keyword, as in class B extends A.
+
+Here's an example of an inheritance hierarchy in JavaScript:
+class Animal { /* ...class code here... */ }
+class Bird extends Animal { /* ...class code here... */ }
+class Eagle extends Bird { /* ...class code here... */ }
+
+            OOP Principles: Encapsulation
+In the simplest terms, encapsulation has to do with making a code implementation "hidden" from other users, in the sense that they don't have to know how my code works in order to "consume" the code.
+
+For example, when I run the following code:
+"abc".toUpperCase();
+
+I don't really need to worry or even waste time thinking about how the toUpperCase() method works. All I want is to use it, since I know it's available to me. Even if the underlying syntax - that is, the implementation of the toUpperCase() method changes - as long as it doesn't break my code, I don't have to worry about what it does in the background, or even how it does it.
+
+            OOP Principles: Abstraction
+Abstraction is all about writing code in a way that will make it more generalized.
+The concepts of encapsulation and abstraction are often misunderstood because their differences can feel blurry.
+It helps to think of it in the following terms: 
+
+    -> An abstraction is about extracting the concept of what you're trying to do, rather than dealing with a specific manifestation of that concept. 
+    -> Encapsulation is about you not having access to, or not being concerned with, how some implementation works internally.
+While both the encapsulation and abstraction are important concepts in OOP, it requires more experience with programming in general to really delve into this topic.
+
+For now, it's enough to be aware of their existence in OOP.
+
+                        OOP Principles: Polymorphism
+Polymorphism is a word derived from the Greek language meaning "multiple forms". An alternative translation might be: "something that can take on many shapes".
+So, to understand what polymorphism is about, let's consider some real-life objects.
+
+    -> A door has a bell. It could be said that the bell is a property of the door object. This bell can be rung. When would someone ring a bell on the door? Obviously, to get someone to show up at the door.
+    -> Now consider a bell on a bicycle. A bicycle has a bell. It could be said that the bell is a property of the bicycle object. This bell could also be rung. However, the reason, the intention, and the result of somebody ringing the bell on a bicycle is not the same as ringing the bell on a door.
+
+The above concepts can be coded in JavaScript as follows:
+const bicycle = {
+    bell: function() {
+        return "Ring, ring! Watch out, please!"
+    }
+}
+const door = {
+    bell: function() {
+        return "Ring, ring! Come here, please!"
+    }
+}
+
+So, I can access the bell() method on the bicycle object, using the following syntax:  
+
+bicycle.bell(); // "Get away, please"
+
+I can also access the bell() method on the door object, using this syntax:  
+
+door.bell(); // "Come here, please"
+
+At this point, one can conclude that the exact same name of the method can have the exact opposite intent, based on what object it is used for.
+
+Now, to make this code truly polymorphic, I will add another function declaration:
+
+function ringTheBell(thing) {
+    console.log(thing.bell())
+}
+
+Now I have declared a ringTheBell() function. It accepts a thing parameter - which I expect to be an object, namely, either the bicycle object or the door object.
+
+So now, if I call the ringTheBell() function and pass it the bicycle as its single argument, here's the output:
+
+ringTheBell(bicycle); // Ring, ring! Watch out, please!
+
+However, if I invoke the ringTheBell() function and pass it the door object, I'll get the following output: 
+
+ringTheBell(door); // "Ring, ring! Come here, please!"
+
+You've now seen an example of the exact same function producing different results, based on the context in which it is used.
+
+Here's another example,the concatenation operator, used by calling the built-in concat() method.
+If I use the concat() method on two strings, it behaves exactly the same as if I used the + operator. 
+
+"abc".concat("def"); // 'abcdef'
+
+I can also use the concat() method on two arrays. Here's the result: 
+
+["abc"].concat(["def"]); // ['abc', 'def']
+
+Consider using the + operator on two arrays with one member each:  
+
+["abc"] + ["def"]; // ["abcdef"]
+
+This means that the concat() method is exhibiting polymorphic behavior since it behaves differently based on the context - in this case, based on what data types I give it.
+To reiterate, polymorphism is useful because it allows developers to build objects that can have the exact same functionality, namely, functions with the exact same name, which behave exactly the same. However, at the same time, you can override some parts of the shared functionality or even the complete functionality, in some other parts of the OOP structure.
+
+Here's an example of polymorphism using classes in JavaScript:
+
+class Bird {
+    useWings() {
+        console.log("Flying!")
+    }
+}
+class Eagle extends Bird {
+    useWings() {
+        super.useWings()
+        console.log("Barely flapping!")
+    }
+}
+class Penguin extends Bird {
+    useWings() {
+        console.log("Diving!")
+    }
+}
+var baldEagle = new Eagle();
+var kingPenguin = new Penguin();
+baldEagle.useWings(); // "Flying! Barely flapping!"
+kingPenguin.useWings(); // "Diving!"
+
+The Penguin and Eagle sub-classes both inherit from the Bird super-class. The Eagle sub-class inherits the useWings() method from the Bird class, but extends it with an additional console log. The Penguin sub-class doesn't inherit the useWings() class - instead, it has its own implementation, although the Penguin class itself does extend the Bird class.  
+
+
+                    Constructors
+JavaScript has a number of built-in object types, such as:
+
+ Math, Date, Object, Function, Boolean, Symbol, Array, Map, Set, Promise, JSON, etc.
+
+These objects are sometimes referred to as "native objects".
+Constructor functions, commonly referred to as just "constructors", are special functions that allow us to build instances of these built-in native objects. All the constructors are capitalized.
+To use a constructor function, I must prepend it with the operator new.
+For example, to create a new instance of the Date object, I can run: new Date(). What I get back is the current datetime, such as:
+Thu Feb 03 2022 11:24:08 GMT+0100 (Central European Standard Time) 
+However, not all the built-in objects come with a constructor function. An example of such an object type is the built-in Math object.
+Running new Math() throws an Uncaught TypeError, informing us that Math is not a constructor.
+Thus, I can conclude that some built-in objects do have constructors, when they serve a particular purpose: to allow us to instantiate a specific instance of a given object's constructor. The built-in Date object is perfectly suited for having a constructor because each new date object instance I build should have unique data by definition, since it's going to be a different timestamp - it's going to be built at a different moment in time.
+Other built-in objects that don't have constructors, such as the Math object, don't need a constructor. They're just static objects whose properties and methods can be accessed directly, from the built-in object itself. In other words, there is no point in building an instance of the built-in Math object to be able to use its functionality.
+For example, if I want to use the pow method of the Math object to calculate exponential values, there's no need to build an instance of the Math object to do so. For example, to get the number 2 to the power of 5, I'd run:
+
+Math.pow(2,5); // --> 32
+
+There's no need to build an instance of the Math object since there would be nothing that needs to be stored in that specific object's instance.
+Besides constructor functions for the built-in objects, I can also define custom constructor functions.
+Here's an example:
+
+function Icecream(flavor) {
+    this.flavor = flavor;
+    this.meltIt = function() {
+        console.log(`The ${this.flavor} icecream has melted`);
+    }
+}
+
+Now I can make as many icecreams as I want:
+
+function Icecream(flavor) {
+    this.flavor = flavor;
+    this.meltIt = function() {
+        console.log(`The ${this.flavor} icecream has melted`);
+    }
+}
+
+let kiwiIcecream = new Icecream("kiwi");
+let appleIcecream = new Icecream("apple");
+kiwiIcecream; // --> Icecream {flavor: 'kiwi', meltIt: ƒ}
+appleIcecream; // --> Icecream {flavor: 'apple', meltIt: ƒ}
+
+I've just built two instance objects of Icecream type.
+The most common use case of new is to use it with one of the built-in object types.
+Note that using constructor functions on all built-in objects is sometimes not the best approach.
+This is especially true for object constructors of primitive types, namely: String, Number, and Boolean.
+For example, using the built-in String constructor, I can build new strings:
+
+let apple = new String("apple");
+apple; // --> String {'apple'}
+
+The apple variable is an object of type String.
+Let's see how the apple object differs from the following pear variable:
+
+let pear = "pear";
+pear; // --> "pear"
+
+The pear variable is a string literal, that is, a primitive Javascript value.
+The pear variable, being a primitive value, will always be more performant than the apple variable, which is an object.
+Besides being more performant, due to the fact that each object in JavaScript is unique, you can't compare a String object with another String object, even when their values are identical.
+In other words, if you compare new String('plum') === new String('plum'), you'll get back false, while "plum" === "plum" returns true. You're getting the false when comparing objects because it is not the values that you pass to the constructor that are being compared, but rather the memory location where objects are saved.
+Besides not using constructors to build object versions of primitives, you are better off not using constructors when constructing plain, regular objects.
+Instead of new Object, you should stick to the object literal syntax: {}.
+A RegExp object is another built-in object in JavaScript. It's used to pattern-match strings using what's known as "Regular Expressions". Regular Expressions exist in many languages, not just JavaScript.
+In JavaScript, you can built an instance of the RegExp constructor using new RegExp. 
+Alternatively, you can use a pattern literal instead of RegExp. Here's an example of using /d/ as a pattern literal, passed-in as an argument to the match method on a string.
+
+"abcd".match(/d/); // null
+"abcd".match(/a/); // ['a', index: 0, input: 'abcd', groups: undefined]
+
+Instead of using Array, Function, and RegExp constructors, you should use their array literal, function literal, and pattern literal varieties: [], () {}, and /()/.
+However, when building objects of other built-in types, we can use the constructor.
+Here are a few examples:
+
+new Date();
+new Error();
+new Map();
+new Promise();
+new Set();
+new WeakSet();
+new WeakMap();
+
+The above list is inconclusive, but it's just there to give you an idea of some constructor functions you can surely use.
+
+
+                        Using Spread and Rest
+In this reading, you'll learn how to join arrays, objects using the rest operator. You will also discover how to use the spread operator to:
+
+    -> Add new members to arrays without using the push() method,
+    -> Convert a string to an array and
+    -> Copy either an object or an array into a separate object 
+Recall that the push() and pop() methods are used to add and remove items from the end of an array.
+            
+            Join arrays, objects using the rest operator
+Using the spread operator, it's easy to concatenate arrays:
+
+const fruits = ['apple', 'pear', 'plum']
+const berries = ['blueberry', 'strawberry']
+const fruitsAndBerries = [...fruits, ...berries] // concatenate
+console.log(fruitsAndBerries); // outputs a single array
+
+Here's the result: ['apple', 'pear', 'plum', 'blueberry', 'strawberry']
+
+It's also easy to join objects:  
+
+const flying = { wings: 2 }
+const car = { wheels: 4 }
+const flyingCar = {...flying, ...car}
+console.log(flyingCar) // {wings: 2, wheels: 4}
+
+            Add new members to arrays without using the push() method
+Here's how to use the spread operator to easily add one or more members to an existing array:
+
+let veggies = ['onion', 'parsley'];
+veggies = [...veggies, 'carrot', 'beetroot'];
+console.log(veggies);
+
+Here's the output: ['onion', 'parsley', 'carrot', 'beetroot']
+
+Convert a string to an array using the spread operator
+Given a string, it's easy to spread it out into separate array items:
+
+const greeting = "Hello";
+const arrayOfChars = [...greeting];
+console.log(arrayOfChars); //  ['H', 'e', 'l', 'l', 'o']
+
+            Copy either an object or an array into a separate one
+Here's how to copy an object into a completely separate object, using the spread operator.
+
+const car1 = {
+    speed: 200,
+    color: 'yellow'
+}
+const car 2 = {...car1}
+
+car1.speed = 201
+
+console.log(car1.speed, car2.speed)
+
+The output is 201, 200.
+
+You can copy an array into a completely separate array, also using the spread operator, like this:
+
+const fruits1 = ['apples', 'pears']
+const fruits2 = [...fruits]
+fruits1.pop()
+console.log(fruits1, "not", fruits2)
+
+This time, the output is: ['apples'] 'not' ['apples','pears']
+
+Note that the spread operator only performs a shallow copy of the source array or object. For more information on this, please refer to the additional reading.
+There are many more tricks that you can perform with the spread operator. Some of them are really handy when you start working with a library such as React.
+
+                        JavaScript interactivity
+Did you know that JavaScript's initial purpose was to provide interactivity in the browser?
+
+In other words, it was the "set of controls" that would allow web developers to control the behavior of the webpages and even the browsers that these webpages worked on.
+This is still the case today.
+As the web ecosystem developed and the world became ever more digitized, so did the myriad of ways that one can use JavaScript as a web developer to manipulate websites.
+Initially, in the late 1990s, there was plain JavaScript that had to be tweaked to suit individual browsers.
+Then, by the mid-2000s, the jQuery library came out, with the idea of writing less code, but doing more with it. It "leveled the playing field" as it allowed developers to use a single code-base for various browsers.
+This trend continued and many other frameworks such as React, Vue, Angular, D3, and more came along.
+Together with npm and Node.js, the JavaScript ecosystem is not slowing down.
+Even though it has gone a long way, sometimes it's good to go back to basics. JavaScript is still the king when it comes to making our websites interactive.
+Although CSS has developed significantly over the years, it is still JavaScript that allows users to: 
+
+    -> Get their geolocation,
+    -> Interact with maps,
+    -> Play games in the browser, 
+    -> Handle all kinds of user-triggered events, regardless of the device,
+    -> Verify form input before sending it to the backend of a webapp,
+    -> and more!
+
+There are many, many ways in which JavaScript allows you to build rich, interactive experiences on the web.
+
+                        Moving data around on the web
+The modern web consists of millions and millions of web pages, connected services and databases.
+There are websites communicating with other websites, getting data from data feeds and data providers, both paid and free.
+All of these data flows must be facilitated with some kind of data format.
+Around 2001, Douglas Crockford came up with a data interchange format based on JavaScript objects. The name given to this format was JSON, which is JavaScript Object Notation.
+Before JSON, the most common data interchange file format was XML (Extensible Markup Language). However, due to XML's syntax, it required more characters to describe the data that was sent. Also, since it was a specific stand-alone language, it wasn't as easily inter-operable with JavaScript.
+Thus, the two major reasons for the JSON format becoming the dominant data interchange format that it is today is two-fold:
+
+    -> First, it's very lightweight, with syntax very similar to "a stringified JavaScript object". You'll learn more about the specifics of this later.
+    -> Second, it's easier to handle in JavaScript code, since, JSON, after all, is just JavaScript.
+
+It is often said that JSON is a subset of JavaScript, meaning it adheres to syntax rules of the JavaScript language, but it's even more strict in how proper JSON code should be formatted. In other words, all JSON code is JavaScript, but not all JavaScript code is JSON.
+Besides being a data interchange format, JSON is also a file format. It's not uncommon to access some third-party data from a third-party website into our own code in the form of a json file.
+For example, if you had a website with the data on stock price movements, you might want to get the data of the current stock prices from a data vendor. They might offer their data service by giving you access to the file named, say stockPrices.json, that you could access from their servers.
+Once you'd downloaded that stringified JSON data into your own code, you could then convert that data to a plain JavaScript object.
+That would mean that you could use your web application's code to "dig into" the third-party data-converted-to-a-JavaScript-object, so as to obtain specific information based on a given set of criteria.
+
+For example, if the stringified JSON data was converted to an object that had the following structure:
+const currencyInfo = {
+    [
+        USD: {
+            // ...
+        },
+        GBP: {
+            // ...
+        },
+        EUR: {
+            // ...
+        }
+    ]
+}
+
+You could then access only the data on the USD property, if that's what was needed by you app at a given point in time.
+Hopefully, with this explanation, you understand, at a high level, how and why you might want to use JSON in your own code.
+It's all about getting stringified JSON data from a server, converting ("parsing") that data into JS objects in your own code, working with the converted data in your own code, and perhaps even stringifying the result into JSON, so that this data is then ready to, for example, be sent back to a server after your code has processed it locally.
+
+                        JSON is just a string - but there are rules that it must follow
+JSON is a string, but it must be a properly-formatted string. In other words, it must adhere to some rules.
+
+If a JSON string is not properly formatted, JavaScript would not be able to parse it into a JavaScript object.
+JSON can work with some primitives and some complex data types, as described below.
+Only a subset of values in JavaScript can be properly stringified to JSON and parsed from a JavaScript object into a JSON string.
+
+These values include:
+    -> primitive values: strings, numbers, bolleans, null
+    -> complex values: objects and arrays (no functions!)
+    -> Objects have double-quoted strings for all keys
+    -> Properties are comma-delimited both in JSON objects and in JSON arrays, just like in regular JavaScript code
+    -> String properties must be surrounded in double quotes. For example:
+
+"fruits", "vegetables"
+
+Number properties are represented using the regular JavaScript number syntax; e.g
+5, 10, 1.2
+
+Boolean properties are represented using the regular JavaScript boolean syntax, that is:
+true and false
+
+Null as a property is the same as in regular JavaScript; it's just a
+null
+
+You can use object literals and array literals, as long as you follow the above rules
+What happens if you try to stringify a data type which is not accepted in JSON syntax?
+For example, what if you try to stringify a function? The operation will silently fail.
+If you try to stringify some other data types, such as a BigInt number, say 123n, you'd get the following error: Uncaught TypeError: Do not know how to serialize a BigInt.
+
+Some examples of JSON strings
+Finally, here is an example of a stringified JSON object, with a single key-value pair:
+
+'{"color":"red"}' 
+Here's a bit more complex JSON object:
+
+'{"color":"red", "nestedObject": { "color": "blue" } }' 
+
+The above JSON object encodes two properties:
+
+    -> "color":"red"
+    -> "nestedObject": { "color": "blue" }
+
+It's also possible to have a JSON string encoding just an array:
+
+'["one", "two", "three"]'
+
+The above JSON string encodes an array holding three items, three values of the string data type. Obviously, just like objects, arrays can nest other simple or complex data structures.
+
+For example:
+'[{ "color": "blue" }, {"color: "red"}]'
+In the above example, the JSON string encodes an array which holds two objects, where each object consists of a single key-value pair, where both values are strings.

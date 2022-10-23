@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        font-family: "Trebuchet MS";
+      }
+      .ellipsis,
+      .clip {
+        width: 300px;
+        text-overflow: ellipsis;
+        border: 2px solid brown;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .clip {
+        text-overflow: clip;
+      }
+      .ellipsis:hover,
+      .clip:hover {
+        overflow: visible;
+      }
+
+      .vert {
+        writing-mode: vertical-rl;
+      }
+
+      .wordwrap {
+        width: 50px;
+        overflow: hidden;
+        border: 2px solid brown;
+      }
+      .wrap {
+        word-wrap: break-word;
+      }
+
+      .text-shadow {
+        background-color: black;
+        font-family: "papyrus";
+        width: 150px;
+        text-shadow: 0 0 30px green, 0 0 5px white;
+        /*
+        1. X -coordinate
+        2. Y-coordinate
+        3. Blur radius
+        4. shadow color
+        */
+      }
+    </style>
+
+    <h1>Ellipsis Property</h1>
+    <div class="ellipsis">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+    </div>
+
+    <h2>Clip Propery</h2>
+    <div class="clip">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit
+    </div>
+
+    <h2>Vertical Text</h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>
+    <p class="vert">20 - 25 items</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>
+
+    <h2>Word Wrap</h2>
+    <p class="wordwrap">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit
+    </p>
+
+    <h2>Text Shadow</h2>
+    <h1 class="text-shadow">Little Lemon</h1>
+  </body>
+</html>

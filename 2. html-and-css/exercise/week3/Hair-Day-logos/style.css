@@ -1,0 +1,97 @@
+body {
+  background-color: lightblue;
+  font-family: "Times New Roman", Times, serif;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* header  */
+.header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+}
+
+/* nav class */
+.nav ul {
+  text-align: center;
+}
+.nav li {
+  display: inline-block;
+  margin: 1em 1em 1em 1em;
+}
+
+/* hover section for nav elements */
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  color: blue;
+}
+
+/* promotion class inside first section */
+.promotion {
+  margin-top: auto;
+}
+
+/* stype for all paragraph elements except promotion class */
+p {
+  margin-top: 50px;
+  font-size: 1.1rem;
+}
+
+/* apply on all section */
+section {
+  display: flex;
+}
+
+/* apply on all article inside the main */
+article {
+  /* flex: 1; */
+  display: inline-block;
+  margin: 1em 1em 1em 1em;
+}
+
+/* for image inside article of the main section */
+.info-img {
+  width: 400px;
+  margin-top: 20px;
+}
+
+.info {
+  width: 200px;
+  margin-top: 20px;
+  height: 100px;
+}
+
+.info-txt {
+  margin-top: auto;
+}
+
+/* footer */
+footer {
+  display: flex;
+}
+
+footer div {
+  flex: 1;
+}
+
+footer img {
+  display: block;
+  margin-right: 50px;
+  width: 100px;
+}
+
+footer p {
+  margin-top: 30px;
+  display: center;
+}
+
+footer p:hover {
+  color: blue;
+}

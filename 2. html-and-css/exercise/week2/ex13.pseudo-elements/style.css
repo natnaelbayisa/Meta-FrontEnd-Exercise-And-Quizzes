@@ -1,0 +1,49 @@
+li::first-letter {
+  color: coral;
+
+  font-size: 1.3em;
+
+  font-weight: bold;
+
+  line-height: 1;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li::first-line {
+  color: lightseagreen;
+  text-decoration: underline;
+  line-height: 1;
+}
+
+li::selection {
+  color: brown;
+  background-color: antiquewhite;
+  line-height: 1;
+}
+
+li::marker {
+  color: cornflowerblue;
+  content: "-> ";
+  font-size: 1.1em;
+}
+
+/* Div part */
+#tips::before {
+  background: darkkhaki;
+  color: darkslategray;
+  content: "Tip:";
+  padding-left: 3px;
+  padding-right: 5px;
+  border-radius: 10%;
+}
+
+#tips::after {
+  background: darkkhaki;
+  color: darkslategray;
+  content: "!!";
+  padding-right: 5px;
+  border-radius: 20%;
+}
