@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import { validateEmail } from "./utils";
-import { ThemeProvider } from "./ThemeContext";
+import { ThemeProvider } from "./Components/ThemeContext";
 
 const PasswordErrorMessage = () => {
   return (
