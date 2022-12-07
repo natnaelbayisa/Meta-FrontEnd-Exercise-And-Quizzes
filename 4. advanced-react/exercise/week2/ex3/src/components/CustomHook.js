@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
 export default function CustomHook() {
-  const [day, setDay] = useState("Monday");
+  const [day, setDay] = useState(
+    new Date().toLocaleString("default", { weekday: "long" })
+  );
   const PrevDay = usePrevious(day);
 
   const getNextDay = () => {

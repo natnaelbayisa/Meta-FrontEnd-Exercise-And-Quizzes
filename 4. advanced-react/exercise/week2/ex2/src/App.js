@@ -1,5 +1,8 @@
 import "./App.css";
 import { useState } from "react";
+import ShoppingCart from "./components/ShoppingCart";
+import ChangeTitle from "./components/ChangeTitle";
+import DataFetching from "./components/DataFetching";
 
 function App() {
   const [greeting, setGreeting] = useState({
@@ -36,6 +39,8 @@ function App() {
 
   return (
     <div className="App">
+      <DataFetching />
+      <ChangeTitle />
       <h1>{greeting.pc}</h1>
       <button onClick={pcNames}>Find ur pc name(s)</button>
 
@@ -48,6 +53,9 @@ function App() {
 
       <h1>{greeting.greet}</h1>
       <button onClick={updateGreeting}>Update greeting</button>
+
+      {/* passing value to ShoppingCart */}
+      <ShoppingCart count={5} price={10} />
     </div>
   );
 }

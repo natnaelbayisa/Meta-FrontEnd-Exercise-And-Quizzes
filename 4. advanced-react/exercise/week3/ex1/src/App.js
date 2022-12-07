@@ -1,6 +1,8 @@
 import "./App.css";
 import { RadioGroup, RadioOption } from "./components/RadioGroup";
 import { useState } from "react";
+import ComponentComposition from "./components/ComponentComposition";
+import LoginSignup from "./components/LoginSignup";
 
 function App() {
   const [selected, setSelected] = useState("");
@@ -14,6 +16,9 @@ function App() {
         <RadioOption value="other">Other</RadioOption>
       </RadioGroup>
       <button disabled={!selected}>Submit</button>
+
+      <ComponentComposition />
+      <LoginSignup />
     </div>
   );
 }

@@ -1,6 +1,10 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { PanelMouseLogger, PointMouseLogger } from "./components/RenderProps";
+import {
+  PanelMouseLogger,
+  PointMouseLogger,
+} from "./components/RenderPropsCursoprPosition";
+import HocCursorPosition from "./components/HocCursorPosition";
 const DataFetcher = ({ render, url }) => {
   const [data, setData] = useState([]);
 
@@ -41,6 +45,8 @@ function App() {
       <h1>Implementing scroller position with render props</h1>
       <PanelMouseLogger />
       <PointMouseLogger />
+      <h1>Implementing scroller position with HOC</h1>
+      <HocCursorPosition />
     </div>
   );
 }

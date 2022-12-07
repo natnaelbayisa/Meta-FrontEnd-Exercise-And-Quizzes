@@ -1,8 +1,6 @@
 import { useState } from "react";
-import FetchData from "./components/FetchData";
 import GoalForm from "./components/GoalForm";
 import ListOfGoals from "./components/ListOfGoals";
-import CustomHook from "./components/CustomHook";
 
 export default function App(props) {
   const [allGoals, updateAllGoals] = useState([]);
@@ -43,10 +41,6 @@ export default function App(props) {
       )}
       <GoalForm onAdd={AddGoal} />
       <ListOfGoals allGoals={allGoals} />
-      <h1>fetch data from random API</h1>
-      <FetchData />
-      <h1>Using custom hook</h1>
-      <CustomHook />
     </div>
   );
 }

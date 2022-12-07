@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+//cross-cutting concerns, high order component(HOC) for cusror position
 const MousePosition = ({ render }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
