@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import Test from "./Test";
+import FeedbackForm from "./components/FeedbackForm";
 
 const ToDo = (props) => (
   <tr>
@@ -17,6 +17,10 @@ const ToDo = (props) => (
 );
 
 function App() {
+  const handleSubmit = () => {
+    console.log("Form submitted!");
+  };
+
   const [todos, setTodos] = useState([
     {
       id: "todo1",
@@ -42,7 +46,8 @@ function App() {
           ))}
         </tbody>
       </table>
-      <Test />
+
+      <FeedbackForm onSubmit={handleSubmit} />
     </div>
   );
 }

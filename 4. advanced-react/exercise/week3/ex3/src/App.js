@@ -1,14 +1,11 @@
 import "./App.css";
-import FeedbackForm from "./components/FeedbackForm";
 
 function App() {
-  const handleSubmit = () => {
-    console.log("Form submitted!");
-  };
-
   return (
     <div className="App">
-      <FeedbackForm onSubmit={handleSubmit} />
+      <a href="https://github.com" className="App-link">
+        Github
+      </a>
     </div>
   );
 }
