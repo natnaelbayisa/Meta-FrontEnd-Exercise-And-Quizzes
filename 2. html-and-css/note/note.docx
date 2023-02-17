@@ -234,6 +234,31 @@ align-self: start | center | end | stretch
 
 place-self: start | stretch /* shorthand for two properties above */
 
+                        Using CSS Grid layouts
+.container {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 2fr 1fr; 
+}
+
+                        The repeat function
+Another really useful tool in the grid layout is the repeat CSS function, which allows you to repeat columns or rows so that the code itself is less repetitive. As an example, here's how you'd re-write the above code snippet using the repeat function:
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: 2fr 1fr;
+}
+The fr is a flexible length unit in CSS grid that grows or shrinks based on the available space in the grid. It is used to specify the size of grid tracks (rows or columns) in a grid layout. The fr unit is a proportional unit, meaning that it takes up a fraction of the available space based on the value assigned to it
+The first value given to the repeat function above is the number 3, meaning, there should be three columns in this grid. The second value is the width of each column in the grid - in this case, the width of each column is 100px.
+
+                            The minmax function
+Another useful function that you can utilize is the minmax function. In the example below, the grid-auto-rows property is used with a call to the minmax function, which sets the value for this grid's rows to 150px each.
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-auto-rows: minmax(150px, auto);
+}
+
                         Flexbox
 The syntax for creating a flexbox:
 

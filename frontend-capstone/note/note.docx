@@ -1,0 +1,84 @@
+            Recap: React basics
+Overview
+Having worked through the two React-focused courses in this Front-End developer program, you are likely to know that React is all about components and that components rely heavily on the JSX syntax. In this reading, you’ll be guided through a quick recap of the basic building blocks of React.
+
+            What is React?
+React is a declarative and component-based JavaScript library used to build user interfaces. It allows you to build components and compose them together. 
+
+This feature, namely, the composability of React components, is very important because it allows you to construct React apps similar to how you'd create a structure with toy blocks. Simply put, it's a process that allows the construction of complex structures from simple building blocks.
+
+            React components
+In modern React, every React component is a JavaScript function. To differentiate between regular HTML elements and custom React components, you need to capitalize the component function's name. Then, using JSX syntax, you can render a component from another component. JSX syntax relies on expressions and ternary operators.
+
+            Rendering components
+For a component to be rendered (displayed) on a screen, it needs to be imported into another component. A component that imports another component is known as the parent component. The component that gets imported and rendered is referred to as a child component. 
+
+You can render multiple components from the parent component and pass data from a parent component to a child component using props.
+
+For example, suppose you have a parent component named App, which imports a child component named Header:
+
+import React from "react";
+import Header from "./Header";
+
+export default function App() {
+    return (
+        <Header />
+    )
+}
+
+The Header component returns some HTML with the heading element containing some text.
+
+export default function Header() {
+    return (
+        <div className="main-grid">
+            <h1>This is the Header</h1>
+        </div>
+    )
+}
+
+Props, state and event handlers
+
+There are two ways that components work with data: props and state. If the data comes from a parent component, that data comes in the form of props. Props are immutable and external to a component, meaning they come from outside a component. State is mutable and internal to a component, meaning it exists inside a component.
+
+Event handlers are a way to update state. Event handlers in React work similarly to the event attributes in plain HTML. There are several differences between the two syntaxes, but the two main ones are:
+
+    -> HTML event attributes use lowercase; React event attributes use camelCase.
+    -> HTML event attributes use parentheses; React event attributes don't use parentheses.
+
+                    Conclusion
+In this reading, you revisited the topic of React basics. Now that you've re-acquainted yourself with some of the basic React concepts, you are better prepared to take on your next exercise, which will involve setting up components for your project app. If you would like a more in-depth recap of the React basics, please revisit the following lesson items from the React basics course:  
+
+Recap: Accessibility
+Overview
+Your web app needs to be accessible, so, in this reading, you will recap what you have already learned in previous courses to ensure your project is accessible to all.
+
+Content
+Making websites usable for all users, including those with disabilities, impairments and limits, is known as web accessibility. These restrictions or disabilities may include:
+
+-> blindness
+-> poor vision
+-> difficulty learning
+-> other cognitive impairments
+->deafness
+->loss of hearing
+->speech impairments
+
+By following specific design guidelines for the web, accessibility ensures that users with disabilities or restrictions enjoy an experience that is at least comparable to that of non-disabled users.  Website accessibility is crucial since it gives all users equal access to your material. Digital accessibility must be implemented. It’s not optional. In most developed countries, websites and mobile applications must adhere to regulations that prevent discrimination against individuals with disabilities. 
+
+Elements of web accessibility
+The four major elements to concentrate on while developing an accessible website are outlined in the WCAG (Web Content Accessibility Guidelines)and standards. These are published by the World Wide Web Consortium's (W3C) Web Accessibility Initiative (WAI).  These four principles, which contain online accessibility recommendations that you can use as a guide and strive to implement on your site whenever and wherever it is practical, will each be recapped below.
+
+Perceivable
+The information and content on your website must be perceived, understood and known by visitors. Users who are blind or have impaired vision frequently use screen-reader software, transforming a written text into synthesized speech or braille letters. Remember that perceiving doesn't necessarily mean seeing with one's eyes.
+
+Operable
+The use of operable websites is possible without interfering in any way with the user. Every feature of the website's functionality must be accessible to all users, including page navigation, link selection from a menu and the ability to play and pause audio and video. In general, the most usable websites are plain, uncomplicated and devoid of any unnecessary functionality that can obstruct users with disabilities and limits.
+
+Understandable
+Visitors should be able to quickly understand all your website's material, including its textual and graphic design content. Verbose, jumbled language is complex for your average visitor to understand and restricts access for those with cognitive issues and impairments and visitors who do not speak the primary language of your website. This idea also applies to the organization of your website. Your website's navigation should be easily accessible to users on most, if not all, of your pages, and it should be organized logically.
+
+Robust
+All visitors to your website, including those who use assistive technology like screen readers should readily understand and consume the material.
+
+Conclusion 
+In this reading, you revisited the concept of accessibility and how it can be implemented to make websites and web applications usable for all users. By concentrating on your website's level of accessibility, you'll improve UX for every visitor and demonstrate to your users that you value their business and care about them as individuals, increasing their loyalty to and support for your business.
